@@ -11,7 +11,14 @@ npm run dev
 
 Go to http://localhost:8080
 
-## How to deploy
+## Host on server
+1. Install serve
 ```
-npm run deploy
+npm install -g serve
 ```
+
+2. Run the build
+```
+npm run start
+```
+It shall now runs on port 8080

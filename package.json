@@ -59,7 +59,8 @@
     "install:clean": "rm -rf node_modules && npm install && npm run build:tailwind && npm run build:prod",
     "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
     "predeploy": "rm -rf dist build && npm run build:tailwind && npm run build:prod",
-    "deploy": "gh-pages -d build"
+    "deploy:github": "gh-pages -d build",
+    "start": "./bin/start.sh"
   },
   "eslintConfig": {
     "extends": [
