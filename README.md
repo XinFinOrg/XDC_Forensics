@@ -6,8 +6,8 @@
 </p>
 
 <p align="center">
-  XDC v2 consensus engine automatic forking detection system <br/>
-  with a mission to keep XDC as the most stable chain
+  XDC forking detection system <br/>
+  with a mission to be the most reliable blockchain
 </p>
 <br/>
 
@@ -32,4 +32,4 @@ npm install -g serve
 ```
 npm run start
 ```
-It shall now runs on port 8080
+It shall now runs on port 8888
