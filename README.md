@@ -1,4 +1,15 @@
+
 # Forensics-ui
+
+<p align="center">
+  <img src="./src/assets/img/XDC-Forensics.png" />
+</p>
+
+<p align="center">
+  XDC v2 consensus engine automatic forking detection system <br/>
+  with a mission to keep XDC as the most stable chain
+</p>
+<br/>
 
 ## Dev setup
 UI of XDC Forensics monitoring
