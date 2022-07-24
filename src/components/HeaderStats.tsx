@@ -112,7 +112,7 @@ const HeaderStats = () =>{
           </div>
           <div className="mt-10 grid justify-items-center">
             <Typography.Title level={1} >
-              XDC V2 Forensics Monitoring
+              XDC Forensics Monitoring
             </Typography.Title>
           </div>
         </div>
