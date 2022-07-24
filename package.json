@@ -15,7 +15,6 @@
     "@types/react-dom": "^18.0.5",
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
-    "@types/tailwindcss": "^3.0.10",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
@@ -54,10 +53,10 @@
   },
   "scripts": {
     "dev": "npm run build:tailwind && npx webpack serve --mode development",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
+    "build:dev": "npx webpack --mode=development",
+    "build:prod": "npx webpack --mode=production --node-env=production",
     "install:clean": "rm -rf node_modules && npm install && npm run build:tailwind && npm run build:prod",
-    "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
+    "build:tailwind": "npx tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
     "predeploy": "rm -rf dist build && npm run build:tailwind && npm run build:prod",
     "deploy:github": "gh-pages -d build",
     "start": "./bin/start.sh"

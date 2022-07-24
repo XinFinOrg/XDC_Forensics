@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { ForensicsEventType } from '../client/forensicsServer';
-import { Alert, Tag as AntTag } from 'antd';
-import {
-  CloseCircleOutlined,
-  ExclamationCircleOutlined,
-} from '@ant-design/icons';
-
+import { Alert } from 'antd';
 
 export enum ForensicsReasonType {
   ATTACK = 'Deliberate Attack',
