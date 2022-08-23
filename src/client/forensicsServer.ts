@@ -14,6 +14,14 @@ export interface BlockInformation {
   hashPath: string[]
 }
 
+export interface VoteInformation {
+  blockInfo: {
+    Number: string;
+    Hash: string;
+    Round: string;
+  }
+}
+
 export interface QcDetailes {
   attackType: ForensicsEventType;
   suspeciousNodes: string[];
@@ -25,10 +33,12 @@ export interface QcDetailes {
   fork2: BlockInformation;
 }
 
-interface VoteDetailes {
+export interface VoteDetailes {
   attackType: ForensicsEventType;
   suspeciousNodes: string[];
   timeSinceLastEvent: string;
+  vote1: VoteInformation;
+  vote2: VoteInformation;
 }
 
 export interface DetailedReport {
