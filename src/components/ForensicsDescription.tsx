@@ -62,7 +62,7 @@ const ForensicsDescription = (props: ForensicsDescriptionProps) => {
         </Descriptions.Item>
 
         <Descriptions.Item label="Type" span={3}>
-          <ForensicsReasonTag eventType={props.data.attackType}></ForensicsReasonTag>
+          <ForensicsReasonTag eventType={props.data.attackType} forensicsType="Quorum Certificate"></ForensicsReasonTag>
         </Descriptions.Item>
         <Descriptions.Item label="Event Time(UTC)">{new Date(props.data.eventTime).toLocaleString('en-GB', { timeZone: 'UTC' })}</Descriptions.Item>
         <Descriptions.Item label="Time since last event" span={2}>

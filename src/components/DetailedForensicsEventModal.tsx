@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Modal, Collapse, Spin, Divider, Row, Col } from 'antd';
-import { DetailedReport, getDetailedForensics, QcDetailes } from '../client/forensicsServer';
+import { DetailedReport, getDetailedForensics, QcDetailes, VoteDetailes } from '../client/forensicsServer';
 import HierarchicalTreeVisualization from './HierarchicalTreeVisualization';
 import ForensicsDescription from './ForensicsDescription';
 import NodeInfoPanel from './NodeInfoPanel';
+import VoteEquivocationDescription from './VoteEquivocationDescription';
 const { Panel } = Collapse;
 
 const generateCollapsedNodeInfo = (suspeciousNodes: string[]) => {
@@ -57,29 +58,42 @@ const DetailedForensicsEventModal = (props: {
     const forensicsType = detailedReport.forensicsType;
     switch (forensicsType) {
       case 'QC':
-        const details = detailedReport.details as QcDetailes;
-        const descriptionData = {
-          ...details,
+        const qcDetails = detailedReport.details as QcDetailes;
+        const qcDescriptionData = {
+          ...qcDetails,
           eventTime: detailedReport.eventTime
         }
         return (
           <div>
-            <ForensicsDescription data={descriptionData}></ForensicsDescription>
+            <ForensicsDescription data={qcDescriptionData}></ForensicsDescription>
             <Row>
               <Col span={16}>
                 <Divider orientation="left">Suspecious nodes</Divider>
-                {generateCollapsedNodeInfo(details.suspeciousNodes)}
+                {generateCollapsedNodeInfo(qcDetails.suspeciousNodes)}
               </Col>
               <Col span={8}>
                 <Divider orientation="left">Forking Chain Visualization</Divider>
-                <HierarchicalTreeVisualization data={details.divergingPathsMap}></HierarchicalTreeVisualization>
+                <HierarchicalTreeVisualization data={qcDetails.divergingPathsMap}></HierarchicalTreeVisualization>
               </Col>
             </Row>
           </div>
         )
       case 'Vote':
+        const voteDetails = detailedReport.details as VoteDetailes;
+        const voteDescriptionData = {
+          ...voteDetails,
+          eventTime: detailedReport.eventTime
+        }
         return (
-          <div>vote</div>
+          <div>
+            <VoteEquivocationDescription data={voteDescriptionData}></VoteEquivocationDescription>
+            <Row>
+              <Col span={24}>
+                <Divider orientation="left">Suspecious nodes</Divider>
+                {generateCollapsedNodeInfo(voteDetails.suspeciousNodes)}
+              </Col>
+            </Row>
+          </div>
         )
       
       default:

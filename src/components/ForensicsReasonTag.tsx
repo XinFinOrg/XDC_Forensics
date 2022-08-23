@@ -7,14 +7,14 @@ export enum ForensicsReasonType {
   PRONE_TO_NETWORK = 'Slow network'
 }
 
-const ForensicsReasonTag = ({eventType}: { eventType: ForensicsEventType}) => {
+const ForensicsReasonTag = ({eventType, forensicsType}: { eventType: ForensicsEventType, forensicsType: string}) => {
   const generateTag = () => {
     switch (eventType) {
       case 'ATTACK':
         return (
             <Alert
             message={ForensicsReasonType.ATTACK}
-            description="The forking is caused by some nodes deliberate attacking the network with faulty Quorum Cert"
+            description={`Some nodes deliberate attacking the network with faulty ${forensicsType}`}
             type="error"
             showIcon
           />
