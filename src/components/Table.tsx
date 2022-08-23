@@ -8,9 +8,9 @@ import DetailedForensicsEventModal from './DetailedForensicsEventModal';
 
 
 
-const LAST_7_DAYS = 'Last 7 Days';
-const LAST_30_DAYS = 'Last 30 Days';
-const ALL_HISTORY = 'All History';
+export const LAST_7_DAYS = 'Last 7 Days';
+export const LAST_30_DAYS = 'Last 30 Days';
+export const ALL_HISTORY = 'All History';
 
 const ForensicsTable = () => {
   const [segmentValue, setSegmentValue]: [string, (v: string) => void] = React.useState<string>(LAST_7_DAYS);
@@ -125,7 +125,17 @@ const columns: ColumnsType<InitialForensicsReports> = [
     let isSubscribed = true;
     // Fetch the inital report
     const fetchAndSetInitialReports = async() => {
-      const reports = await loadInitialForensicsEvents(segmentValue);
+      let numOfDays = '7';
+      switch (segmentValue) {
+        case LAST_7_DAYS:
+          numOfDays = '7';
+          break;
+        case LAST_30_DAYS:
+          numOfDays = '30';
+        case ALL_HISTORY:
+          numOfDays = 'all';
+      }
+      const reports = await loadInitialForensicsEvents(numOfDays);
       if (isSubscribed) {
         setForensicsReports(p => ([...reports, ...p]));
       }

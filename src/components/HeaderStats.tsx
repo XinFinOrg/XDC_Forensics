@@ -44,7 +44,7 @@ const HeaderStats = () =>{
   React.useEffect(()=> {
     periodicallyUpdateLatestBlock();
     const fetchAndSetInitialReports = async() => {
-      const reports = await loadInitialForensicsEvents('LAST_1_DAY');
+      const reports = await loadInitialForensicsEvents('1');
       if(reports) {
         const attackers = reports.flatMap(r => {
           return r.suspeciousNodes

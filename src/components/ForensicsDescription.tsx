@@ -24,7 +24,7 @@ const CollapsedHashPath = (hashPath: string[]) => {
         <Timeline>
           {
             hashPath.map(h => {
-              return  <Timeline.Item>{h}</Timeline.Item>
+              return  <Timeline.Item key={h}>{h}</Timeline.Item>
             })
           }
         </Timeline>
