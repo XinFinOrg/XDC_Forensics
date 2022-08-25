@@ -65,8 +65,7 @@ export interface InitialForensicsReports {
   key: string,
   forensicsType: ForenticsType;
   eventTime: string;
-  divergingBlockNumber: number;
-  divergingBlockHash: string;
+  affectedBlockNum: string;
   suspeciousNodes: string[];
 }
 

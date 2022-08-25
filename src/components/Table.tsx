@@ -53,20 +53,12 @@ const ForensicsTable = () => {
   
 const columns: ColumnsType<InitialForensicsReports> = [
   {
-    title: 'Diverging Number',
+    title: 'Affected Block Num',
     width: 250,
-    dataIndex: 'divergingBlockNumber',
-    key: 'divergingBlockNumber',
+    dataIndex: 'affectedBlockNum',
+    key: 'affectedBlockNum',
     fixed: 'left',
   },
-  {
-    title: 'Diverging Hash',
-    width: 300,
-    dataIndex: 'divergingBlockHash',
-    key: 'divergingBlockHash',
-    fixed: 'left',
-  },
-  
   {
     title: 'Type',
     width: 100,
