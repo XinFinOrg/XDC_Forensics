@@ -23,12 +23,15 @@ npm run dev
 Go to http://localhost:8080
 
 ## Host on server
+Note: Below will run the frontend only. In order to have the forensics fully funcational, you are required to host the backend as well.
+Please follow the instruction from [XDC-Stats](https://github.com/XinFinOrg/XDCStats) to host the forensics backend.
+
 1. Install serve
 ```
 npm install -g serve
 ```
 
-2. Run the build
+2. Start the server
 ```
 npm run start
 ```
