@@ -11,6 +11,8 @@ export interface ForensicsDescriptionProps {
   data: {
     fork1: BlockInformation;
     fork2: BlockInformation;
+    divergingBlockNumber: number;
+    divergingBlockHash: string;
     eventTime: string;
     attackType: ForensicsEventType;
     timeSinceLastEvent?: string;
@@ -24,7 +26,7 @@ const CollapsedHashPath = (hashPath: string[]) => {
         <Timeline>
           {
             hashPath.map(h => {
-              return  <Timeline.Item>{h}</Timeline.Item>
+              return  <Timeline.Item key={h}>{h}</Timeline.Item>
             })
           }
         </Timeline>
@@ -37,6 +39,12 @@ const ForensicsDescription = (props: ForensicsDescriptionProps) => {
   return (
     <div>
       <Descriptions bordered>
+        <Descriptions.Item label="Diverging Block Number" span={2}>
+          {props.data.divergingBlockNumber}
+        </Descriptions.Item>
+        <Descriptions.Item label="Diverging Block Hash" span={2}>
+        {props.data.divergingBlockHash}
+        </Descriptions.Item>
         <Descriptions.Item label="Fork 1 Block Info" span={2}>
           <div>
             Block Number: {props.data.fork1.blockInfo.Number || ''}
@@ -62,7 +70,7 @@ const ForensicsDescription = (props: ForensicsDescriptionProps) => {
         </Descriptions.Item>
 
         <Descriptions.Item label="Type" span={3}>
-          <ForensicsReasonTag eventType={props.data.attackType}></ForensicsReasonTag>
+          <ForensicsReasonTag eventType={props.data.attackType} forensicsType="Quorum Certificate"></ForensicsReasonTag>
         </Descriptions.Item>
         <Descriptions.Item label="Event Time(UTC)">{new Date(props.data.eventTime).toLocaleString('en-GB', { timeZone: 'UTC' })}</Descriptions.Item>
         <Descriptions.Item label="Time since last event" span={2}>

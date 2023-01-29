@@ -1,4 +1,15 @@
+
 # Forensics-ui
+
+<p align="center">
+  <img src="./src/assets/img/XDC-Forensics.png" />
+</p>
+
+<p align="center">
+  XDC forking detection system <br/>
+  with a mission to be the most reliable blockchain
+</p>
+<br/>
 
 ## Dev setup
 UI of XDC Forensics monitoring
@@ -21,4 +32,4 @@ npm install -g serve
 ```
 npm run start
 ```
-It shall now runs on port 8080
+It shall now runs on port 8888

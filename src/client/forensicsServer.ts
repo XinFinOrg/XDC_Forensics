@@ -2,6 +2,7 @@ import {Axios} from 'axios';
 import { RawNodeDatum } from 'react-d3-tree/lib/types/common';
 
 export type ForensicsEventType = 'ATTACK' | 'PRONE_TO_NETWORK';
+export type ForenticsType = 'QC' | 'Vote';
 
 export interface BlockInformation {
   blockInfo: {
@@ -13,19 +14,38 @@ export interface BlockInformation {
   hashPath: string[]
 }
 
-export interface DetailedReport {
-  key: string;
-  divergingBlockNumber: number;
-  divergingBlockHash: string;
-  forensicsType: string;
-  divergingPathsMap: RawNodeDatum,
-  eventTime: string;
-  daysSinceLastEvent: string;
+export interface VoteInformation {
+  blockInfo: {
+    Number: string;
+    Hash: string;
+    Round: string;
+  }
+}
+
+export interface QcDetailes {
   attackType: ForensicsEventType;
-  fork1: BlockInformation;
-  fork2: BlockInformation;
   suspeciousNodes: string[];
   timeSinceLastEvent?: string;
+  divergingBlockNumber: number;
+  divergingBlockHash: string;
+  divergingPathsMap: RawNodeDatum,
+  fork1: BlockInformation;
+  fork2: BlockInformation;
+}
+
+export interface VoteDetailes {
+  attackType: ForensicsEventType;
+  suspeciousNodes: string[];
+  timeSinceLastEvent: string;
+  vote1: VoteInformation;
+  vote2: VoteInformation;
+}
+
+export interface DetailedReport {
+  key: string;
+  eventTime: string;
+  forensicsType: ForenticsType;
+  details: QcDetailes | VoteDetailes;
 }
 
 export interface NodeInfo {
@@ -43,10 +63,9 @@ export interface NodeInfo {
 
 export interface InitialForensicsReports {
   key: string,
-  forensicsType: string;
+  forensicsType: ForenticsType;
   eventTime: string;
-  divergingBlockNumber: number;
-  divergingBlockHash: string;
+  affectedBlockNum: string;
   suspeciousNodes: string[];
 }
 
@@ -57,20 +76,7 @@ const request = new Axios({
 // Load the inital content from backend when the page is first landed
 export const loadInitialForensicsEvents = async (numOfDays: string): Promise<InitialForensicsReports[]> => {
   // Default is 7
-  let range = '7';
-  switch (numOfDays) {
-    case 'LAST_1_DAY':
-      range = '1'
-      break;
-    case 'LAST_30_DAYS':
-      range = '30'
-      break;
-    case 'ALL_HISTORY':
-      range = 'all'
-      break;
-    default:
-      break;
-  }
+  let range = numOfDays || '7';
   const {data} = await request.get('/batch/load', {
     params: { range }
   });

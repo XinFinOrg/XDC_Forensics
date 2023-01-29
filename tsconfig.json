@@ -5,12 +5,14 @@
     "module": "es6",
     "target": "es5",
     "jsx": "react",
+    "sourceMap": true,
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "node_modules",
+    "**/*.spec.ts",
     "build"
   ]
 }
