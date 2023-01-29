@@ -17,7 +17,7 @@ Go to http://localhost:8080
 npm install -g serve
 ```
 
-2. Run the build
+2. Start the server
 ```
 npm run start
 ```
